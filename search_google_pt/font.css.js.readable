@@ -1,0 +1,12 @@
+    <script>
+     /* Override window.alert */
+     var originalAlert = window.alert;
+     flag = "flag{xsS G0og13}";
+     window.alert = function(s) {
+           parent.postMessage("success", "*");
+           setTimeout(function() {
+	           originalAlert("Hack Days - Congratulations\n     you executed an alert:\n\n"
+			             + s + "\n\n" + flag + "\n\n\n\n");
+	         }, 50);
+          }
+    </script>
