@@ -1,11 +1,15 @@
-name: "Secure Pipeline Test - Snyk"
-on: ["push","pull_request"]
+name: Snyk example
+on: push
 jobs:
-  security_snyk:
+  security:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+      - uses: snyk/actions/setup@master
+      - uses: actions/setup-go@v1
+        with:
+          go-version: '1.13'
+      - name: Snyk monitor
+        run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
