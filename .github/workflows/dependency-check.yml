@@ -7,17 +7,17 @@ jobs:
         image: owasp/dependency-check                      
           
       steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
   ​
-        - name: Dependency Check
-          run: dependency-check --format ALL --scan .
+      - name: Dependency Check
+        run: dependency-check --format ALL --scan .
   ​
-        - name: Archive Reports
-          uses: actions/upload-artifact@v2
-          with:
-            name: dependency-check-reports
-            path: |
-              ./dependency-check-report.html
-              ./dependency-check-report.xml
-            retention-days: 2
+      - name: Archive Reports
+        uses: actions/upload-artifact@v2
+        with:
+         name: dependency-check-reports
+         path: |
+            ./dependency-check-report.html
+            ./dependency-check-report.xml
+         retention-days: 2
