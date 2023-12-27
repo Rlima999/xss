@@ -1,19 +1,28 @@
 name: "Secure Pipeline Test - Dependency Check"
 on: ["push","pull_request"]
 jobs:
-    sca:
-        runs-on: ubuntu-latest
-        container:
-            image: owasp/dependency-check
-        steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v2
-        - name: Dependency Check
-          run: dependency-check --format ALL --scan .
-        - name: Archive Reports
-          uses: actions/upload-artifact@v2
-          with:
-              name: dependency-check-reports
-              path: |
-                  ./dependency-check-report.html
+  depchecktest:
+    runs-on: ubuntu-latest
+    name: depecheck_test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build project with Maven
+        run: mvn clean install
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'test'
+          path: '.'
+          format: 'HTML'
+          out: 'reports' # this is the default, no need to specify unless you wish to override it
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
      
