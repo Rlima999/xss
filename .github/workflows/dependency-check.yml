@@ -7,7 +7,7 @@ jobs:
             image: owasp/dependency-check
         steps:
         - name: Checkout Repository
-          uses: actions/checkout@v4
+          uses: actions/checkout@v2
         - name: Dependency Check
           run: dependency-check --format ALL --scan .
         - name: Archive Reports
