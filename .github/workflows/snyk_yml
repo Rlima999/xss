@@ -1,7 +1,9 @@
-name: Example workflow using Snyk
+name: "Secure Pipeline Test - Snyk"
+on: ["push","pull_request"]
+jobs:
 on: push
 jobs:
-  security:
+  security_snyk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
