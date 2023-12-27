@@ -1,8 +1,6 @@
 name: "Secure Pipeline"
 on: ["push", "pull_request"]
 jobs:
-    sonarqube:
-        ...
     sast:
         ...
     dependency-check-sca:
