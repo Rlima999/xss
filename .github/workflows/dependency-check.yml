@@ -1,23 +1,19 @@
 name: "Secure Pipeline Test - Dependency Check"
 on: ["push","pull_request"]
 jobs:
-   sca:
-      runs-on: ubuntu-latest    
-      container:
-        image: owasp/dependency-check                      
-          
-      steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-  ​
-      - name: Dependency Check
-        run: dependency-check --format ALL --scan .
-  ​
-      - name: Archive Reports
-        uses: actions/upload-artifact@v2
-        with:
-         name: dependency-check-reports
-         path: |
-            ./dependency-check-report.html
-            ./dependency-check-report.xml
-         retention-days: 2
+    sca:
+        runs-on: ubuntu-latest
+        container:
+            image: owasp/dependency-check
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+        - name: Dependency Check
+          run: dependency-check --format ALL --scan .
+        - name: Archive Reports
+          uses: actions/upload-artifact@v2
+          with:
+              name: dependency-check-reports
+              path: |
+                  ./dependency-check-report.html
+     
