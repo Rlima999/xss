@@ -1,8 +1,6 @@
 name: "Secure Pipeline Test - Snyk"
 on: ["push","pull_request"]
 jobs:
-on: push
-jobs:
   security_snyk:
     runs-on: ubuntu-latest
     steps:
