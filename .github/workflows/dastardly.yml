@@ -11,10 +11,11 @@ jobs:
           target-url: 'https://sporting.cftraining.pt/'
       - name: Upload Test results
         if: always()
-        uses: actions/upload-artifact@master
+        uses: mikepenz/action-junit-report@v3
         with:
            name: dast report
            path: ${{github.workspace}}/reports
+           require_tests: true
     
       # You can replace this next step with any JUnit XML parser of your choosing
 #      - name: Publish Test Report
