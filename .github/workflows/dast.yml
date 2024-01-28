@@ -9,7 +9,7 @@ jobs:
         uses: zaproxy/action-baseline@v0.4.0
         with:
            # Target URL
-          target: "http://sheer.com"
+          target: "https://search1.cfappsecurity.com/"
           fail_action: false
           token: $
           issue_title: Security Tests
