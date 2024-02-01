@@ -1,4 +1,4 @@
-name: "Secure Pipeline Test - Dast-Zap"
+name: "Secure Pipeline Test -Dast-Zap"
 on: ["push","pull_request"]
 jobs:
   zap_scan:
