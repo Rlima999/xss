@@ -8,7 +8,7 @@ jobs:
         continue-on-error: true                        # This allows subsequent steps to run even if this step fails
         uses: PortSwigger/dastardly-github-action@main
         with:
-          target-url: 'https://sporting.cftraining.pt/'
+          target-url: 'https://www.zaproxy.org/'
       - name: Upload Test results
         if: always()
         uses: mikepenz/action-junit-report@v3
